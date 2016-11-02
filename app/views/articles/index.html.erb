@@ -1,25 +1,26 @@
 <div class= "center jumbotron">
 <h1>Articles</h1>
  
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-  </tr>
+
  
   <% @articles.each do |article| %>
-    <tr>
-      <td><%= article.title %></td>
-      <td><%= article.text %></td>
-      <td><%= link_to 'Show', article_path(article) %></td>
-      <td><%= link_to 'Edit', edit_article_path(article) %></td>
-      <td><%= link_to 'Destroy', article_path(article),
+    
+    <div class="article-container">
+      <%= article.title %>
+      <br>
+      <%= article.text %>
+    </div>  
+    <div class= "article-nav">
+      <%= link_to 'Show', article_path(article), class:"article-nav"   %> |
+       <%= link_to 'Edit', edit_article_path(article), class:"article-nav" %> |
+       <%= link_to 'Destroy', article_path(article),
               method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
-    </tr>
+              data: { confirm: 'Are you sure?' },class:"article-nav" %>
+    </div>
   <% end %>
-  <%= link_to 'New article', new_article_path %>
+  <div class="new-article">
+  <%= link_to 'New article', new_article_path, class:"btn btn-lg btn-primary" %>
+  </div>
 
-</table>
 
 </div>

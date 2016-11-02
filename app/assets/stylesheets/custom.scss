@@ -66,3 +66,27 @@ textarea {
   color: #0000FF;
   text-decoration: none;
 }
+
+.center.jumbotron{
+  width: 50%;
+  background-color:rgba(29, 30, 25, .8);
+  color:#4DC8ED;
+  border-radius: 10%;
+  margin:auto;
+}
+
+.article-container{
+  display:table;
+  max-width: 50%;
+  margin:5px auto 5px;
+  border: white solid 3px;
+  border-radius: 4px;
+  padding: 2%;
+}
+
+.article-nav{
+  color:orange;
+}
+.new-article{
+   margin-top: 10px;
+}

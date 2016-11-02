@@ -1,0 +1,35 @@
+<div class="container">
+	<div class="row">
+		<% flash.each do |key, value| %>
+        	<div class="alert alert-success"><%= value %></div>
+      	<% end %>
+
+      	<div class="col-md-8">
+      		<div class="card text-xs-center">
+      			<div class="card-header">
+      				<h3>CHAT ROOMS</h3>
+      			</div>
+      			<div class="list-group list-group-flush">
+      				<% @chat_rooms.each do |room| %>
+                              <%= room.title %>
+                              <%end%>
+      			</div>
+      		</div>
+      	</div>
+      	<div class="col-md-4">
+      		<div class="card">
+      			<div class="card-header text-xs-center">
+      				<h3>ADD CHAT ROOM</h3>
+      			</div>
+      			<div class="card-block text-xs-left">
+      				<%= form_for @chat_room, url: {controller: "chatrooms", action: "create"} do |f| %>
+						<div class="form-group">
+							<%= f.text_field :title, autofocus: true, placeholder: 'Title', class: 'form-control' %>
+						</div>
+						<%= f.submit "Add!", class: 'btn btn-primary' %>
+					<% end %>
+      			</div>
+      		</div>
+      	</div>
+	</div>
+</div>

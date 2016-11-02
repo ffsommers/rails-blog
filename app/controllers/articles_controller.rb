@@ -1,13 +1,17 @@
 class ArticlesController < ApplicationController
 
-	 http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
+	
 
 	def index
 		@articles = Article.all
 	end
 
 	def show
+	   if !current_user
+	   	redirect_to new_user_session_path
+	   else	
 		@article = Article.find(params[:id])
+	end
 	end
 
 

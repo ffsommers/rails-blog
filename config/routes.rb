@@ -3,17 +3,21 @@ Rails.application.routes.draw do
   	 sessions: 'users/sessions'
   }
  
-  get 'welcome/index'
-  	resources :articles do
-      resources :comments
-     end 
-  root 'welcome#index'
-  
-  # Serve websocket cable requests in-process
+  resources :chat_rooms, only: [:new, :create, :show, :index]
+  root 'chat_rooms#index'
+
+
   mount ActionCable.server => '/cable'
 
-  resources :chatrooms, param: :slug
-  resources :messages
-
+ 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
+
+
+# GET /photos photos#index  display a list of all photos
+# GET /photos/new photos#new  return an HTML form for creating a new photo
+# POST  /photos photos#create create a new photo
+# GET /photos/:id photos#show display a specific photo
+# GET /photos/:id/edit  photos#edit return an HTML form for editing a photo
+# PATCH/PUT /photos/:id photos#update update a specific photo
+# DELETE  /photos/:id photos#destroy  delete a specific photo

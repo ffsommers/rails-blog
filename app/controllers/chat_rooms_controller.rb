@@ -1,11 +1,11 @@
-class ChatroomsController < ApplicationController
-  def index
-		@chat_rooms = Chatroom.all
-		@chat_room = Chatroom.new
+class ChatRoomsController < ApplicationController
+     def index
+		@chat_rooms = ChatRoom.all
+		@chat_room = ChatRoom.new
 	end
 
 	def new
-		@chat_room = Chatroom.new
+		@chat_room = ChatRoom.new
 	end
 
 	def create
@@ -19,7 +19,7 @@ class ChatroomsController < ApplicationController
 	end
 
 	def show
-		@chat_room = Chatroom.includes(:messages).find_by(id: params[:id])
+		@chat_room = ChatRoom.includes(:messages).find_by(id: params[:id])
 		@message = Message.new
 		@appearances = []
 	end
@@ -27,7 +27,6 @@ class ChatroomsController < ApplicationController
 	private
 
 	def chat_room_params
-		params.require(:chatroom).permit(:title)
+		params.require(:chat_room).permit(:title)
 	end
-
 end

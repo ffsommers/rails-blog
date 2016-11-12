@@ -15,10 +15,16 @@ class ArticlesController < ApplicationController
 
 
 	def new
+   if !current_user
+      redirect_to new_user_session_path
+    else
 		@article = Article.new
 	end
 
 	def edit
+    if !current_user
+      redirect_to new_user_session_path
+    else
 		@article = Article.find(params[:id])
 	end
 
@@ -49,6 +55,9 @@ def update
 end
 
 def destroy
+  if !current_user
+      redirect_to new_user_session_path
+    else
 	@article = Article.find(params[:id])
 	@article.destroy
 

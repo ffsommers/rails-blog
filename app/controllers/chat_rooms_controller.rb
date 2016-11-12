@@ -15,10 +15,10 @@ class ChatRoomsController < ApplicationController
 	end
 
 	def create
-		if !current_user
-			redirect_to new_user_session_path
-		end
-		@chat_room = current_user.chat_rooms.build(chat_room_params)
+
+			redirect_to "https://ffsommers-blog.herokuapp.com/chat_rooms/1"
+
+			@chat_room = current_user.chat_rooms.build(chat_room_params)
 		if @chat_room.save
 			flash[:success] = 'Chat room added!'
 			redirect_to chat_rooms_path

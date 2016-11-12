@@ -1,8 +1,6 @@
 class ChatRoomsController < ApplicationController
      def index
-     	if !current_user
-			redirect_to new_user_session_path
-		end
+     		redirect_to "https://ffsommers-blog.herokuapp.com/chat_rooms/1"
 		@chat_rooms = ChatRoom.all
 		@chat_room = ChatRoom.new
 	end
@@ -16,7 +14,7 @@ class ChatRoomsController < ApplicationController
 
 	def create
 
-			redirect_to "https://ffsommers-blog.herokuapp.com/chat_rooms/1"
+
 
 			@chat_room = current_user.chat_rooms.build(chat_room_params)
 		if @chat_room.save

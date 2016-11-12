@@ -19,6 +19,7 @@ class ArticlesController < ApplicationController
       redirect_to new_user_session_path
     else
 		@article = Article.new
+  end
 	end
 
 	def edit
@@ -27,6 +28,7 @@ class ArticlesController < ApplicationController
     else
 		@article = Article.find(params[:id])
 	end
+end
 
 	def create
 		@article = Article.new(article_params)
@@ -57,11 +59,12 @@ end
 def destroy
   if !current_user
       redirect_to new_user_session_path
-    else
+  else
 	@article = Article.find(params[:id])
 	@article.destroy
 
 	redirect_to articles_path
+end
 end
 
 private

@@ -1,14 +1,23 @@
 class ChatRoomsController < ApplicationController
      def index
+     	if !current_user
+			redirect_to new_user_session_path
+		end
 		@chat_rooms = ChatRoom.all
 		@chat_room = ChatRoom.new
 	end
 
 	def new
+		if !current_user
+			redirect_to new_user_session_path
+		end
 		@chat_room = ChatRoom.new
 	end
 
 	def create
+		if !current_user
+			redirect_to new_user_session_path
+		end
 		@chat_room = current_user.chat_rooms.build(chat_room_params)
 		if @chat_room.save
 			flash[:success] = 'Chat room added!'
@@ -19,6 +28,9 @@ class ChatRoomsController < ApplicationController
 	end
 
 	def show
+		if !current_user
+			redirect_to new_user_session_path
+		end
 		@chat_room = ChatRoom.includes(:messages).find_by(id: params[:id])
 		@message = Message.new
 		@appearances = []

@@ -2,15 +2,15 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
   	 sessions: 'users/sessions'
   }
- 
+
   resources :chat_rooms, only: [:new, :create, :show, :index]
   root 'chat_rooms#index'
-  
+
   resources :articles, only: [:new, :create, :show, :update, :index, :create, :destroy  ]
-  resources :comments, only: [:create, :destroy]
+  resources :comments, only: [:new, :destroy]
   mount ActionCable.server => '/cable'
 
- 
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
 

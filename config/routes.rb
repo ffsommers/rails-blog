@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :chat_rooms, only: [:new, :create, :show, :index]
   root 'chat_rooms#index'
 
-  resources :articles, only: [:new, :create, :show, :update, :index, :create, :destroy  ]
+  resources :articles, only: [:new, :create, :show, :update, :index,:destroy  ]
   resources :comments, only: [:new, :destroy]
   mount ActionCable.server => '/cable'
 

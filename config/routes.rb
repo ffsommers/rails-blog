@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resources :articles, only: [:new, :create, :show, :update, :index,:destroy  ]
   resources :comments, only: [:new, :destroy]
+
+
   mount ActionCable.server => '/cable'
 
 
